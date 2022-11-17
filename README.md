@@ -6,17 +6,17 @@
 - [x] Decide on the group name
 - [ ] Input/hello message - introduction, instruction, num of rounds
 - [ ] Get user name (also for leader board)
-- [ ] Generate a random number between 1 and 151 to use as the Pokemon ID number
+- [x] Generate a random number between 1 and 151 to use as the Pokemon ID number
 - [x] Using the Pokemon API get a Pokemon based on its ID number (1st stage)
 - [x] Create a dictionary that contains the returned Pokemon's name, id, height and weight and other playing stat we decide on (?https://pokeapi.co/ )
-- [ ] Get a random Pokemon for the player and another for their opponent
+- [x] Get a random Pokemon for the player and another for their opponent
 - [ ] Ask the user which stat they want to use (height, weight, xp)
 - [ ] Compare the player's and opponent's Pokemon on the chosen stat to decide who wins
 
 
 ## SHOULD
 - [x] Switch ID to base_experience as a fighting stat
-- [ ] Get 2 random Pokemon and let the player decide which one that they want to use
+- [x] Get 2 random Pokemon and let the player decide which one that they want to use
 - [ ] Play multiple rounds and record the outcome of each round. The player with most number of rounds won, wins the game
 
 

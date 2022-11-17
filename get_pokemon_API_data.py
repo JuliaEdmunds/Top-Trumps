@@ -5,30 +5,6 @@
 #      playing stat we decide on (★https://pokeapi.co/ )
 
 import requests
-import random
-
-# Included hardcoded data, so I can test this file in separation (without calling it from "main") for now
-min_number = 1
-max_number = 151
-num_pokemon_ids = 2
-hardcoded_ID = random.sample(range(min_number, max_number + 1), num_pokemon_ids)
-
-# Empty stats for 2 pokemons - to be filled with a function -> get_pokemon_info()
-first_pokemon_stats = {
-    "id": 0,
-    "name": " ",
-    "height": 0,
-    "weight": 0,
-    "xp": 0
-}
-
-second_pokemon_stats = {
-    "id": 0,
-    "name": " ",
-    "height": 0,
-    "weight": 0,
-    "xp": 0
-}
 
 
 def get_pokemon_info(pokemon_id, current_dict):
@@ -42,9 +18,4 @@ def get_pokemon_info(pokemon_id, current_dict):
     current_dict["xp"] = current_pokemon["base_experience"]
 
 
-for i in range(num_pokemon_ids):
-    pokemon_number = hardcoded_ID[i]
-    if i == 0:
-        get_pokemon_info(pokemon_number, first_pokemon_stats)
-    else:
-        get_pokemon_info(pokemon_number, second_pokemon_stats)
+
