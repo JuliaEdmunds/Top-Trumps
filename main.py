@@ -11,3 +11,12 @@
 import test
 
 test.test_hello_function()
+
+# Starting the "real" code here, for now I have selected these parameters, but we can discuss and change
+num_of_rounds = 5
+win_points = 2
+draw_points = 0
+lost_points = -1
+print(f"Welcome to Top Trumps. It is a game in which players decide which stats they want to compare. Player with "
+      f"higher stats wins a round. You will play {num_of_rounds} rounds. Each round you earn points: for win {win_points} "
+      f"points, for draw {draw_points} points and for lost game {lost_points} point")

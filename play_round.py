@@ -8,3 +8,5 @@
 #      COULD: Allow the opponent (computer) to choose a stat that they would like to compare (alternating starting order)
 #   3) Compare the player's and opponent's Pokemon on the chosen stat to decide who wins
 #   4) Record the outcome of each round (who won)
+
+import get_pokemon_API_data
