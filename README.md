@@ -27,5 +27,5 @@
 
 
 ## WON'T
-- [ ] Switch to a different API
+- [ ] Switch to a different API (@Marta: I would like to add this as an option to choose a deck. What do you think?)
 - [ ] Add (types -> type -> name) as a fighting stat (more complex)
