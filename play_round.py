@@ -18,11 +18,13 @@ computer_pokemons = []
 
 
 def get_pokemons_data():
+    # Min and max IDs, number of selected pokemons per player to generate the list of unique Pokemon ids
     min_number = 1
     max_number = 151
     num_pokemon_ids = 4
     pokemon_ids = random.sample(range(min_number, max_number + 1), num_pokemon_ids)
 
+    # Getting pokemom info and assigning them to Player's and computer's stacks
     for i in range(num_pokemon_ids):
         pokemon_number = pokemon_ids[i]
         next_pokemon = get_API_data.get_pokemon_info(pokemon_number)
@@ -32,7 +34,7 @@ def get_pokemons_data():
             computer_pokemons.append(next_pokemon)
 
 
-def choose_a_card():
+def choose_player_card():
     min_num = 1
     max_num = 2
     while True:
@@ -66,11 +68,30 @@ def choose_computer_card():
     else:
         return computer_pokemons[1]
 
-# This will be a function to call from main to play round
-# def play_game():
-get_pokemons_data()
-players_card = choose_a_card()
-computers_card = choose_computer_card()
 
-print(f"Player card: {players_card}")
-print(f"Computer card: {computers_card}")
+def player_choose_stat(card):
+    to_print = ", ".join(f'{key}: {value}' for key, value in card.stats.items())
+    to_print_stats = "/".join(card.stats.keys())
+    stat_chosen = input(f"Your pokemon stats are:\n{to_print}\n"
+                        f"Decide which characteristic you would like to play with: {to_print_stats}? ").lower().strip()
+    while stat_chosen != "height" and stat_chosen != "weight" and stat_chosen != "xp":
+        stat_chosen = input(f"Please choose a valid characteristic: {to_print_stats}! ")
+
+    if stat_chosen == "height":
+        return card.stats["height"]
+    elif stat_chosen == "weight":
+        return card.stats["weight"]
+    else:
+        return card.stats["xp"]
+
+
+# This will be a function to call from main to play round
+def play_game():
+    get_pokemons_data()
+    players_card = choose_player_card()
+    computers_card = choose_computer_card()
+    current_stat = player_choose_stat(players_card)
+    print(current_stat)
+
+
+play_game()

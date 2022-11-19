@@ -4,13 +4,13 @@
 ## MUST
 
 - [x] Decide on the group name
-- [ ] Input/hello message - introduction, instruction, num of rounds
+- [x] Input/hello message - introduction, instruction, num of rounds
 - [ ] Get user name (also for leader board)
 - [x] Generate a random number between 1 and 151 to use as the Pokemon ID number
 - [x] Using the Pokemon API get a Pokemon based on its ID number (1st stage)
 - [x] Create a dictionary that contains the returned Pokemon's name, id, height and weight and other playing stat we decide on (?https://pokeapi.co/ )
 - [x] Get a random Pokemon for the player and another for their opponent
-- [ ] Ask the user which stat they want to use (height, weight, xp)
+- [x] Ask the user which stat they want to use (height, weight, xp)
 - [ ] Compare the player's and opponent's Pokemon on the chosen stat to decide who wins
 
 
