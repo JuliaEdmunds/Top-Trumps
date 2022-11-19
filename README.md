@@ -21,7 +21,7 @@
 
 
 ## COULD
-- [ ] Allow the opponent (computer) to choose a stat that they would like to compare
+- [x] Allow the opponent (computer) to choose a stat that they would like to compare
 - [ ] Record high scores for players and store them in a file - leader board - record 5 top players (names) & their scores
 - [x] Allow the opponent (computer) to get 2 random Pokemon and let it decide which one to use
 

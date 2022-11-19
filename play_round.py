@@ -77,20 +77,24 @@ def player_choose_stat(card):
     while stat_chosen != "height" and stat_chosen != "weight" and stat_chosen != "xp":
         stat_chosen = input(f"Please choose a valid characteristic: {to_print_stats}! ")
 
-    if stat_chosen == "height":
-        return card.stats["height"]
-    elif stat_chosen == "weight":
-        return card.stats["weight"]
-    else:
-        return card.stats["xp"]
+    return stat_chosen
+
 
 
 # This will be a function to call from main to play round
 def play_game():
+    current_round_num = 1
     get_pokemons_data()
     players_card = choose_player_card()
     computers_card = choose_computer_card()
-    current_stat = player_choose_stat(players_card)
+    # Player starts and then player and computer alternate in choosing the fighting stat
+    if current_round_num % 2 != 0:
+        current_stat = player_choose_stat(players_card)
+    else:
+        current_stat = max(computers_card.stats.values())
+
+    print(players_card)
+    print(computers_card)
     print(current_stat)
 
 
