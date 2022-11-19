@@ -56,19 +56,21 @@ def choose_a_card():
         else:
             return player_pokemons[card_to_keep - 1]
 
+
+def choose_computer_card():
+    first_pokemon_max_stat = max(computer_pokemons[0].stats.values())
+    second_pokemon_max_stat = max(computer_pokemons[1].stats.values())
+
+    if first_pokemon_max_stat > second_pokemon_max_stat:
+        return computer_pokemons[0]
+    else:
+        return computer_pokemons[1]
+
 # This will be a function to call from main to play round
 # def play_game():
 get_pokemons_data()
 players_card = choose_a_card()
-computer_pokemons_stats = [computer_pokemons[0].stats, computer_pokemons[1].stats]
-
-first_pokemon_max_stat = max(computer_pokemons[0].stats.values())
-second_pokemon_max_stat = max(computer_pokemons[1].stats.values())
-
-if first_pokemon_max_stat > second_pokemon_max_stat:
-    computers_card = computer_pokemons[0]
-else:
-    computers_card = computer_pokemons[1]
+computers_card = choose_computer_card()
 
 print(f"Player card: {players_card}")
 print(f"Computer card: {computers_card}")
