@@ -11,10 +11,13 @@
 
 import random
 import time
+import E_scores
 import get_API_data
 
 player_pokemons = []
 computer_pokemons = []
+
+# These are repeated from main so if we make change in main for scoring, we need to adjust here too
 
 
 def get_pokemons_data():
@@ -80,10 +83,29 @@ def player_choose_stat(card):
     return stat_chosen
 
 
+def check_score(player_card, computer_card, fighting_stat):
+    player_power = player_card.stats[f"{fighting_stat}"]
+    computer_power = computer_card.stats[f"{fighting_stat}"]
+    print(f"You are fighting with {fighting_stat}! Do you think that {player_card.name} can beat your opponent?")
+    time.sleep(1)
+    print(f"Your opponent plays {computer_card.name}! Let's compare your stats:\nYour {fighting_stat}: {player_power}"
+          f"\nOpponents {fighting_stat}: {computer_power}")
+    if player_power > computer_power:
+        print(f"Your {player_card.name} wins! You gain {E_scores.Score.win} points")
+        return E_scores.Score.win
+    elif player_power < computer_power:
+        print(f"Opponent {computer_card.name} wins! You loose {E_scores.Score.lost} point")
+        return E_scores.Score.lost
+    else:
+        print(f"It's a draw! You gain {E_scores.Score.draw} ponits")
+        return E_scores.Score.draw
+
 
 # This will be a function to call from main to play round
+current_round_num = 1
+
+
 def play_game():
-    current_round_num = 1
     get_pokemons_data()
     players_card = choose_player_card()
     computers_card = choose_computer_card()
@@ -93,9 +115,11 @@ def play_game():
     else:
         current_stat = max(computers_card.stats.values())
 
+    player_points = check_score(players_card, computers_card, current_stat)
     print(players_card)
     print(computers_card)
     print(current_stat)
+    print(player_points)
 
 
 play_game()
