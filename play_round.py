@@ -77,8 +77,8 @@ def player_choose_stat(card):
     to_print_stats = "/".join(card.stats.keys())
     stat_chosen = input(f"Your pokemon stats are:\n{to_print}\n"
                         f"Decide which characteristic you would like to play with: {to_print_stats}? ").lower().strip()
-    while stat_chosen != "height" and stat_chosen != "weight" and stat_chosen != "xp":
-        stat_chosen = input(f"Please choose a valid characteristic: {to_print_stats}! ")
+    while stat_chosen not in card.stats:
+        stat_chosen = input(f"Please choose a valid characteristic: {to_print_stats}! ").lower().strip()
 
     return stat_chosen
 
@@ -94,7 +94,7 @@ def check_score(player_card, computer_card, fighting_stat):
         print(f"Your {player_card.name} wins! You gain {E_scores.Score.win.value} points :D")
         return E_scores.Score.win.value
     elif player_power < computer_power:
-        print(f"Opponent {computer_card.name} wins! You score {E_scores.Score.lost.value} point :(")
+        print(f"Opponent's {computer_card.name} wins! You score {E_scores.Score.lost.value} point :(")
         return E_scores.Score.lost.value
     else:
         print(f"It's a draw! You gain {E_scores.Score.draw.value} points ")
