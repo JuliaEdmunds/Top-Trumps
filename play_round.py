@@ -91,14 +91,14 @@ def check_score(player_card, computer_card, fighting_stat):
     print(f"Your opponent plays {computer_card.name}! Let's compare your stats:\nYour {fighting_stat}: {player_power}"
           f"\nOpponents {fighting_stat}: {computer_power}")
     if player_power > computer_power:
-        print(f"Your {player_card.name} wins! You gain {E_scores.Score.win} points")
-        return E_scores.Score.win
+        print(f"Your {player_card.name} wins! You gain {E_scores.Score.win.value} points")
+        return E_scores.Score.win.value
     elif player_power < computer_power:
-        print(f"Opponent {computer_card.name} wins! You loose {E_scores.Score.lost} point")
-        return E_scores.Score.lost
+        print(f"Opponent {computer_card.name} wins! You loose {E_scores.Score.lost.value} point")
+        return E_scores.Score.lost.value
     else:
-        print(f"It's a draw! You gain {E_scores.Score.draw} ponits")
-        return E_scores.Score.draw
+        print(f"It's a draw! You gain {E_scores.Score.draw.value} points")
+        return E_scores.Score.draw.value
 
 
 # This will be a function to call from main to play round
