@@ -11,7 +11,7 @@
 - [x] Create a dictionary that contains the returned Pokemon's name, id, height and weight and other playing stat we decide on (?https://pokeapi.co/ )
 - [x] Get a random Pokemon for the player and another for their opponent
 - [x] Ask the user which stat they want to use (height, weight, xp)
-- [ ] Compare the player's and opponent's Pokemon on the chosen stat to decide who wins
+- [x] Compare the player's and opponent's Pokemon on the chosen stat to decide who wins
 
 
 ## SHOULD

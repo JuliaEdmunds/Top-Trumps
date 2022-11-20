@@ -91,13 +91,13 @@ def check_score(player_card, computer_card, fighting_stat):
     print(f"Your opponent plays {computer_card.name}! Let's compare your stats:\nYour {fighting_stat}: {player_power}"
           f"\nOpponents {fighting_stat}: {computer_power}")
     if player_power > computer_power:
-        print(f"Your {player_card.name} wins! You gain {E_scores.Score.win.value} points")
+        print(f"Your {player_card.name} wins! You gain {E_scores.Score.win.value} points :D")
         return E_scores.Score.win.value
     elif player_power < computer_power:
-        print(f"Opponent {computer_card.name} wins! You loose {E_scores.Score.lost.value} point")
+        print(f"Opponent {computer_card.name} wins! You score {E_scores.Score.lost.value} point :(")
         return E_scores.Score.lost.value
     else:
-        print(f"It's a draw! You gain {E_scores.Score.draw.value} points")
+        print(f"It's a draw! You gain {E_scores.Score.draw.value} points ")
         return E_scores.Score.draw.value
 
 
@@ -116,10 +116,6 @@ def play_game():
         current_stat = max(computers_card.stats.values())
 
     player_points = check_score(players_card, computers_card, current_stat)
-    print(players_card)
-    print(computers_card)
-    print(current_stat)
-    print(player_points)
 
 
 play_game()
