@@ -17,7 +17,7 @@
 ## SHOULD
 - [x] Switch ID to base_experience as a fighting stat
 - [x] Get 2 random Pokemon and let the player decide which one that they want to use
-- [ ] Play multiple rounds and record the outcome of each round. The player with most number of rounds won, wins the game
+- [x] Play multiple rounds and record the outcome of each round. The player with most number of rounds won, wins the game
 
 
 ## COULD

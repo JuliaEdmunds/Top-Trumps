@@ -8,4 +8,4 @@ class Pokemon:
 
     def __str__(self):
         print_stats = ", ".join(f'{key}: {value}' for key, value in self.stats.items())
-        return f"Name: {self.name}, id: {self.pokemon_id}, {print_stats}"
+        return f"Name: {self.name} (id: {self.pokemon_id}), available stats to choose from: {print_stats}"

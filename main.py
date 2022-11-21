@@ -11,33 +11,21 @@
 import E_scores
 import play_round
 import time
-from os import system, name
+import helpers
 import test
 
 test.test_hello_function()
 
 
 # Starting the "real" code here, for now I have selected these parameters, but we can discuss and change
-
-# Define clear function for windows
-def clear():
-    # for windows the name is "nt"
-    if name == 'nt':
-        _ = system('cls')
-
-    # and for mac and linux, the os.name is 'posix'
-    else:
-        _ = system('clear')
-
-
 num_of_rounds = 5
 win_points = E_scores.Score.win.value
 draw_points = E_scores.Score.draw.value
 lost_points = E_scores.Score.lost.value
 print(f"""Welcome to Top Trumps. It is a game in which players decide (in alternating order) which stats they want to compare. 
 Player with higher stats wins a round. You will play total of {num_of_rounds} rounds. 
-Each round you earn points: for win {win_points} points, for draw {draw_points} points and for a lost round {lost_points} point""")
-time.sleep(2)
+Each round you earn points: for win {win_points} points, for draw {draw_points} points and for a lost round {lost_points} point.\n""")
+time.sleep(5)
 
 player_score = 0
 player_wins = 0
@@ -54,12 +42,13 @@ for round_num in range(num_of_rounds):
     to_print = current_round_result.name
     player_score += current_round_result.value
 
+    helpers.clear()
     print(f"You {to_print}. Current results after {current_round} round/s:"
           f"\nPlayer wins: {player_wins}, points: {player_score}"
-          f"\nOpponent wins: {computer_wins}")
+          f"\nOpponent wins: {computer_wins}\n")
     time.sleep(5)
     # Clear the screen for the next round
-    clear()
+    helpers.clear()
 
 if player_wins > computer_wins:
     print(f"Congrats. You won the game!")

@@ -13,6 +13,7 @@ import random
 import time
 import E_scores
 import get_API_data
+import helpers
 
 player_pokemons = []
 computer_pokemons = []
@@ -57,6 +58,7 @@ def choose_player_card():
             continue
 
         else:
+            helpers.clear()
             return player_pokemons[card_to_keep - 1]
 
 
@@ -75,8 +77,8 @@ def choose_computer_card():
 def player_choose_stat(card):
     to_print = ", ".join(f'{key}: {value}' for key, value in card.stats.items())
     to_print_stats = "/".join(card.stats.keys())
-    stat_chosen = input(f"Your pokemon stats are:\n{to_print}\n"
-                        f"Decide which characteristic you would like to play with: {to_print_stats}? ").lower().strip()
+    stat_chosen = input(f"Your pokemon stats are:{to_print}\n"
+                        f"\nDecide which characteristic you would like to play with: {to_print_stats}? ").lower().strip()
     while stat_chosen not in card.stats:
         stat_chosen = input(f"Please choose a valid characteristic: {to_print_stats}! ").lower().strip()
 
@@ -86,30 +88,40 @@ def player_choose_stat(card):
 def check_score(player_card, computer_card, fighting_stat):
     player_power = player_card.stats[f"{fighting_stat}"]
     computer_power = computer_card.stats[f"{fighting_stat}"]
+    helpers.clear()
     print(f"You are fighting with {fighting_stat}! Do you think that {player_card.name} can beat your opponent?")
-    time.sleep(1)
-    print(f"Your opponent plays {computer_card.name}! Let's compare your stats:\nYour {fighting_stat}: {player_power}"
-          f"\nOpponent's {fighting_stat}: {computer_power}")
+    time.sleep(2)
+    print(f"\nYour opponent plays {computer_card.name}! Let's compare your stats:\n\nYour {fighting_stat}: {player_power}"
+          f"\nOpponent's {fighting_stat}: {computer_power}\n")
+    time.sleep(4)
     if player_power > computer_power:
-        print(f"Your {player_card.name} wins! You gain {E_scores.Score.win.value} points :D")
+        print(f"Your {player_card.name} wins! You gain {E_scores.Score.win.value} points :D\n")
         return E_scores.Score.win
     elif player_power < computer_power:
-        print(f"Opponent's {computer_card.name} wins! You score {E_scores.Score.lost.value} point :(")
+        print(f"Opponent's {computer_card.name} wins! You score {E_scores.Score.lost.value} point :(\n")
         return E_scores.Score.lost
     else:
-        print(f"It's a draw! You gain {E_scores.Score.draw.value} points.")
+        print(f"It's a draw! You gain {E_scores.Score.draw.value} points.\n")
         return E_scores.Score.draw
 
 
 # This is a function to call from main to play round
 def play_round(current_round_num):
     global player_pokemons, computer_pokemons
-    print(f"Round {current_round_num}, fight!")
+    is_player_choosing_stats = current_round_num % 2 != 0
+    helpers.clear()
+    text_to_print = f"Round {current_round_num}, fight!"
+    if is_player_choosing_stats:
+        text_to_print += " (this round player chooses the fighting trait)\n"
+        print(text_to_print)
+    else:
+        text_to_print += " (this round opponent chooses the fighting trait)\n"
+        print(text_to_print)
     get_pokemons_data()
     players_card = choose_player_card()
     computers_card = choose_computer_card()
     # Player starts and then player and computer alternate in choosing the fighting stat
-    if current_round_num % 2 != 0:
+    if is_player_choosing_stats:
         current_stat = player_choose_stat(players_card)
     else:
         # For now computer chooses the stat based on max value (usually weight), to improve we would have in recognize
