@@ -61,6 +61,8 @@ def choose_player_card():
 
 
 def choose_computer_card():
+    # For now computer chooses the card based on max value (usually weight), to improve we would have in recognize
+    # min and max of each trait, so it would choose highest normalized value
     first_pokemon_max_stat = max(computer_pokemons[0].stats.values())
     second_pokemon_max_stat = max(computer_pokemons[1].stats.values())
 
@@ -90,13 +92,13 @@ def check_score(player_card, computer_card, fighting_stat):
           f"\nOpponent's {fighting_stat}: {computer_power}")
     if player_power > computer_power:
         print(f"Your {player_card.name} wins! You gain {E_scores.Score.win.value} points :D")
-        return E_scores.Score.win.value
+        return E_scores.Score.win
     elif player_power < computer_power:
         print(f"Opponent's {computer_card.name} wins! You score {E_scores.Score.lost.value} point :(")
-        return E_scores.Score.lost.value
+        return E_scores.Score.lost
     else:
         print(f"It's a draw! You gain {E_scores.Score.draw.value} points.")
-        return E_scores.Score.draw.value
+        return E_scores.Score.draw
 
 
 # This is a function to call from main to play round
@@ -110,12 +112,13 @@ def play_round(current_round_num):
     if current_round_num % 2 != 0:
         current_stat = player_choose_stat(players_card)
     else:
+        # For now computer chooses the stat based on max value (usually weight), to improve we would have in recognize
+        # min and max of each trait, so it would choose highest normalized value
         current_stat_max = max(computers_card.stats.values())
         current_stat = (list(computers_card.stats.keys())[list(computers_card.stats.values()).index(current_stat_max)])
 
     # Reset and update variables ready for the next round
     player_pokemons.clear()
     computer_pokemons.clear()
-    current_round_num += 1
 
     return check_score(players_card, computers_card, current_stat)
