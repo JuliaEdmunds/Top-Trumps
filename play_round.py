@@ -17,8 +17,6 @@ import get_API_data
 player_pokemons = []
 computer_pokemons = []
 
-# These are repeated from main so if we make change in main for scoring, we need to adjust here too
-
 
 def get_pokemons_data():
     # Min and max IDs, number of selected pokemons per player to generate the list of unique Pokemon ids
@@ -89,7 +87,7 @@ def check_score(player_card, computer_card, fighting_stat):
     print(f"You are fighting with {fighting_stat}! Do you think that {player_card.name} can beat your opponent?")
     time.sleep(1)
     print(f"Your opponent plays {computer_card.name}! Let's compare your stats:\nYour {fighting_stat}: {player_power}"
-          f"\nOpponents {fighting_stat}: {computer_power}")
+          f"\nOpponent's {fighting_stat}: {computer_power}")
     if player_power > computer_power:
         print(f"Your {player_card.name} wins! You gain {E_scores.Score.win.value} points :D")
         return E_scores.Score.win.value
@@ -97,15 +95,14 @@ def check_score(player_card, computer_card, fighting_stat):
         print(f"Opponent's {computer_card.name} wins! You score {E_scores.Score.lost.value} point :(")
         return E_scores.Score.lost.value
     else:
-        print(f"It's a draw! You gain {E_scores.Score.draw.value} points ")
+        print(f"It's a draw! You gain {E_scores.Score.draw.value} points.")
         return E_scores.Score.draw.value
 
 
-# This will be a function to call from main to play round
-current_round_num = 1
-
-
-def play_game():
+# This is a function to call from main to play round
+def play_round(current_round_num):
+    global player_pokemons, computer_pokemons
+    print(f"Round {current_round_num}, fight!")
     get_pokemons_data()
     players_card = choose_player_card()
     computers_card = choose_computer_card()
@@ -113,9 +110,12 @@ def play_game():
     if current_round_num % 2 != 0:
         current_stat = player_choose_stat(players_card)
     else:
-        current_stat = max(computers_card.stats.values())
+        current_stat_max = max(computers_card.stats.values())
+        current_stat = (list(computers_card.stats.keys())[list(computers_card.stats.values()).index(current_stat_max)])
 
-    player_points = check_score(players_card, computers_card, current_stat)
+    # Reset and update variables ready for the next round
+    player_pokemons.clear()
+    computer_pokemons.clear()
+    current_round_num += 1
 
-
-play_game()
+    return check_score(players_card, computers_card, current_stat)

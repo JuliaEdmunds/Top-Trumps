@@ -9,6 +9,7 @@
 # I have created files that we can utilize to work on different features of the project (see below example)
 
 import E_scores
+import play_round
 import test
 
 test.test_hello_function()
@@ -22,3 +23,8 @@ print(f"""Welcome to Top Trumps. It is a game in which players decide which stat
 Player with higher stats wins a round. You will play total of {num_of_rounds} rounds. 
 Each round you earn points: for win {win_points} points, for draw {draw_points} points 
 and for a lost round {lost_points} point""")
+
+for round_num in range(num_of_rounds):
+    current_result = play_round.play_round(round_num + 1)
+
+    # print(f"After round {current_round_num} you have {player_points} points")
