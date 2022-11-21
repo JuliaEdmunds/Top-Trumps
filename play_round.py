@@ -77,7 +77,7 @@ def choose_computer_card():
 def player_choose_stat(card):
     to_print = ", ".join(f'{key}: {value}' for key, value in card.stats.items())
     to_print_stats = "/".join(card.stats.keys())
-    stat_chosen = input(f"Your pokemon stats are:{to_print}\n"
+    stat_chosen = input(f"Your pokemon stats are: {to_print}\n"
                         f"\nDecide which characteristic you would like to play with: {to_print_stats}? ").lower().strip()
     while stat_chosen not in card.stats:
         stat_chosen = input(f"Please choose a valid characteristic: {to_print_stats}! ").lower().strip()
@@ -95,13 +95,16 @@ def check_score(player_card, computer_card, fighting_stat):
           f"\nOpponent's {fighting_stat}: {computer_power}\n")
     time.sleep(4)
     if player_power > computer_power:
-        print(f"Your {player_card.name} wins! You gain {E_scores.Score.win.value} points :D\n")
+        print(f"Your {player_card.name} wins! You gain {E_scores.Score.win.value} points :D")
+        time.sleep(4)
         return E_scores.Score.win
     elif player_power < computer_power:
-        print(f"Opponent's {computer_card.name} wins! You score {E_scores.Score.lost.value} point :(\n")
+        print(f"Opponent's {computer_card.name} wins! You score {E_scores.Score.lost.value} point :(")
+        time.sleep(4)
         return E_scores.Score.lost
     else:
-        print(f"It's a draw! You gain {E_scores.Score.draw.value} points.\n")
+        print(f"It's a draw! You gain {E_scores.Score.draw.value} points.")
+        time.sleep(4)
         return E_scores.Score.draw
 
 
@@ -110,12 +113,12 @@ def play_round(current_round_num):
     global player_pokemons, computer_pokemons
     is_player_choosing_stats = current_round_num % 2 != 0
     helpers.clear()
-    text_to_print = f"Round {current_round_num}, fight!"
+    text_to_print = f"\nRound {current_round_num}, fight!"
     if is_player_choosing_stats:
-        text_to_print += " (this round player chooses the fighting trait)\n"
+        text_to_print += " (this round the player chooses the fighting trait)\n"
         print(text_to_print)
     else:
-        text_to_print += " (this round opponent chooses the fighting trait)\n"
+        text_to_print += " (this round the opponent chooses the fighting trait)\n"
         print(text_to_print)
     get_pokemons_data()
     players_card = choose_player_card()

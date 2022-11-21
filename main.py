@@ -42,17 +42,18 @@ for round_num in range(num_of_rounds):
     to_print = current_round_result.name
     player_score += current_round_result.value
 
-    helpers.clear()
-    print(f"You {to_print}. Current results after {current_round} round/s:"
+    print(f"\nYou {to_print} the round. Current results after {current_round} round/s:"
           f"\nPlayer wins: {player_wins}, points: {player_score}"
           f"\nOpponent wins: {computer_wins}\n")
-    time.sleep(5)
+    time.sleep(7)
     # Clear the screen for the next round
     helpers.clear()
 
 if player_wins > computer_wins:
-    print(f"Congrats. You won the game!")
+    print(f"Congrats. You won the game with {player_wins} wins (opponent won only {computer_wins} rounds) and "
+          f"a total of {player_score} points")
 elif player_wins < computer_wins:
-    print("Sorry this time you lost the game...")
+    print(f"Sorry this time you lost the game... You won {player_wins} rounds while opponent won {computer_wins}. "
+          f"Your total score is {player_score} points")
 else:
-    print("It's a draw.")
+    print(f"It's a draw. Both you and your opponent won {player_wins} rounds. Your total score is {player_score} points")
