@@ -15,33 +15,43 @@ import E_scores
 import get_API_data
 import helpers
 
-player_pokemons = []
-computer_pokemons = []
+player_cards = []
+computer_cards = []
 
 
-def get_pokemons_data():
-    # Min and max IDs, number of selected pokemons per player to generate the list of unique Pokemon ids
-    min_number = 1
-    max_number = 151
-    num_pokemon_ids = 4
-    pokemon_ids = random.sample(range(min_number, max_number + 1), num_pokemon_ids)
+def get_card_data(deck_num):
+    # Starships possible ids
+    starship_valid_ids = [2, 3, 5, 9, 10, 11, 12, 13, 15, 17, 21, 22, 23, 27, 28, 29, 31, 32, 39, 40, 41, 43, 47, 48,
+                          49, 52, 58, 59, 61, 63, 64, 65, 66, 68, 74, 75]
 
-    # Getting pokemom info and assigning them to Player's and computer's stacks
-    for i in range(num_pokemon_ids):
-        pokemon_number = pokemon_ids[i]
-        next_pokemon = get_API_data.get_pokemon_info(pokemon_number)
+    num_card_ids = 4
+
+    if deck_num == 1:
+        # Min and max IDs, number of selected pokemons per player to generate the list of unique Pokemon ids
+        min_number = 1
+        max_number = 151
+        card_ids = random.sample(range(min_number, max_number + 1), num_card_ids)
+        get_matching_card_data = get_API_data.get_pokemon_info
+    else:
+        card_ids = random.sample(starship_valid_ids, num_card_ids)
+        get_matching_card_data = get_API_data.get_starship_info
+
+    # Getting card info and assigning them to Player's and computer's stacks
+    for i in range(num_card_ids):
+        card_number = card_ids[i]
+        next_card = get_matching_card_data(card_number)
         if i <= 1:
-            player_pokemons.append(next_pokemon)
+            player_cards.append(next_card)
         else:
-            computer_pokemons.append(next_pokemon)
+            computer_cards.append(next_card)
 
 
 def choose_player_card():
     min_num = 1
     max_num = 2
     while True:
-        first_to_print = player_pokemons[0]
-        second_to_print = player_pokemons[1]
+        first_to_print = player_cards[0]
+        second_to_print = player_cards[1]
         card_to_keep = input(f"You can choose between two cards. Look at the stats and think carefully which one you "
                              f"want to keep:\n1. {first_to_print}\n2. {second_to_print}\nThe card you don't choose "
                              f"will be discarded. So do you want to keep card 1 or 2? ")
@@ -59,35 +69,39 @@ def choose_player_card():
 
         else:
             helpers.clear()
-            return player_pokemons[card_to_keep - 1]
+            return player_cards[card_to_keep - 1]
 
 
 def choose_computer_card():
-    # For now computer chooses the card based on max value (usually weight), to improve we would have in recognize
-    # min and max of each trait, so it would choose highest normalized value
-    first_pokemon_max_stat = max(computer_pokemons[0].stats.values())
-    second_pokemon_max_stat = max(computer_pokemons[1].stats.values())
+    # For now computer chooses the card based on max value (usually weight for pokemon), to improve the app we would
+    # have it recognize min and max of each trait, so it would choose highest normalized value
+    first_card_max_stat = max(computer_cards[0].stats.values())
+    second_card_max_stat = max(computer_cards[1].stats.values())
 
-    if first_pokemon_max_stat > second_pokemon_max_stat:
-        return computer_pokemons[0]
+    if first_card_max_stat > second_card_max_stat:
+        return computer_cards[0]
     else:
-        return computer_pokemons[1]
+        return computer_cards[1]
 
 
 def player_choose_stat(card):
     to_print = ", ".join(f'{key}: {value}' for key, value in card.stats.items())
     to_print_stats = "/".join(card.stats.keys())
-    stat_chosen = input(f"Your pokemon stats are: {to_print}\n"
-                        f"\nDecide which characteristic you would like to play with: {to_print_stats}? ").lower().strip()
+    stat_chosen = input(f"Your card stats are: {to_print}\n"
+                        f"\nDecide which trait you would like to play with: {to_print_stats}? ").lower().strip()
     while stat_chosen not in card.stats:
-        stat_chosen = input(f"Please choose a valid characteristic: {to_print_stats}! ").lower().strip()
+        stat_chosen = input(f"Please choose a valid trait: {to_print_stats}! ").lower().strip()
 
     return stat_chosen
 
 
 def check_score(player_card, computer_card, fighting_stat):
     player_power = player_card.stats[f"{fighting_stat}"]
+    if player_power == "unknown" or player_power == "n/a":
+        player_power = random.randint(0, 1000)
     computer_power = computer_card.stats[f"{fighting_stat}"]
+    if computer_power == "unknown" or computer_power == "n/a":
+        computer_power = random.randint(0, 1000)
     helpers.clear()
     print(f"You are fighting with {fighting_stat}! Do you think that {player_card.name} can beat your opponent?")
     time.sleep(2)
@@ -95,11 +109,11 @@ def check_score(player_card, computer_card, fighting_stat):
           f"\nOpponent's {fighting_stat}: {computer_power}\n")
     time.sleep(4)
     if player_power > computer_power:
-        print(f"Your {player_card.name} wins! You gain {E_scores.Score.win.value} points :D")
+        print(f"Your {player_card.name} wins! You gain {E_scores.Score.win.value} points!")
         time.sleep(4)
         return E_scores.Score.win
     elif player_power < computer_power:
-        print(f"Opponent's {computer_card.name} wins! You score {E_scores.Score.lost.value} point :(")
+        print(f"Opponent's {computer_card.name} wins! You score {E_scores.Score.lost.value} point...")
         time.sleep(4)
         return E_scores.Score.lost
     else:
@@ -108,9 +122,9 @@ def check_score(player_card, computer_card, fighting_stat):
         return E_scores.Score.draw
 
 
-# This is a function to call from main to play round
-def play_round(current_round_num):
-    global player_pokemons, computer_pokemons
+# This is a function to call from main to play round, takes the round number and the deck number
+def play_round(current_round_num, deck_num):
+    global player_cards, computer_cards
     is_player_choosing_stats = current_round_num % 2 != 0
     helpers.clear()
     text_to_print = f"\nRound {current_round_num}, fight!"
@@ -120,7 +134,7 @@ def play_round(current_round_num):
     else:
         text_to_print += " (this round the opponent chooses the fighting trait)\n"
         print(text_to_print)
-    get_pokemons_data()
+    get_card_data(deck_num)
     players_card = choose_player_card()
     computers_card = choose_computer_card()
     # Player starts and then player and computer alternate in choosing the fighting stat
@@ -133,7 +147,7 @@ def play_round(current_round_num):
         current_stat = (list(computers_card.stats.keys())[list(computers_card.stats.values()).index(current_stat_max)])
 
     # Reset and update variables ready for the next round
-    player_pokemons.clear()
-    computer_pokemons.clear()
+    player_cards.clear()
+    computer_cards.clear()
 
     return check_score(players_card, computers_card, current_stat)
