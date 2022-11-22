@@ -2,3 +2,4 @@
 # Create following functions:
 #   1) Check if the score is eligible to show in the leaderboard
 #   2) Write current name, score and deck (either Pokemon or NBA)  to a leaderboard (sort by score) 
+print("hello")
