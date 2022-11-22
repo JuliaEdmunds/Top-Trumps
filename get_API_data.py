@@ -5,7 +5,7 @@
 #   weight, base_experience and other playing stat we decide on (★https://pokeapi.co/ )
 
 import requests
-from pokemon_card import Pokemon
+from trump import Card
 
 
 def get_pokemon_info(pokemon_id):
@@ -17,8 +17,20 @@ def get_pokemon_info(pokemon_id):
     current_stats["height"] = current_pokemon["height"]
     current_stats["weight"] = current_pokemon["weight"]
     current_stats["xp"] = current_pokemon["base_experience"]
-    pokemon_card = Pokemon(pokemon_id, pokemon_name, current_stats)
+    pokemon_card = Card(pokemon_id, pokemon_name, current_stats)
     return pokemon_card
 
 
-
+def get_starship_info(starship_id):
+    current_stats = {}
+    # Ids from 2 to 75
+    url = f"https://swapi.dev/api/starships/{starship_id}"
+    response = requests.get(url)
+    current_starship = response.json()
+    starship_name = current_starship["name"]
+    current_stats["cost"] = current_starship["cost_in_credits"]
+    current_stats["length"] = current_starship["length"]
+    current_stats["speed"] = current_starship["max_atmosphering_speed"]
+    current_stats["cargo capacity"] = current_starship["cargo_capacity"]
+    starship_card = Card(starship_id, starship_name, current_stats)
+    return starship_card

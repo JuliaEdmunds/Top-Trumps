@@ -24,8 +24,8 @@
 - [x] Allow the opponent (computer) to choose a stat that they would like to compare
 - [ ] Record high scores for players and store them in a file - leader board - record 5 top players (names) & their scores
 - [x] Allow the opponent (computer) to get 2 random Pokemon and let it decide which one to use
+- [ ] Switch to a different API (@Marta: I would like to add this as an option to choose a deck. What do you think?)
 
 
 ## WON'T
-- [ ] Switch to a different API (@Marta: I would like to add this as an option to choose a deck. What do you think?)
 - [ ] Add (types -> type -> name) as a fighting stat (more complex)
