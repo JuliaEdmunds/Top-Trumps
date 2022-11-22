@@ -6,9 +6,16 @@
 #   3) Add 2nd API
 
 import requests
-from trump import Card
-# Needs to be removed v
 import random
+from trump_card import Card
+
+
+def get_random_pokemon_ids(num_card_ids):
+    # Min and max IDs, number of selected pokemons per player to generate the list of unique Pokemon ids
+    min_number = 1
+    max_number = 151
+    card_ids = random.sample(range(min_number, max_number + 1), num_card_ids)
+    return card_ids
 
 
 def get_pokemon_info(pokemon_id):
@@ -24,24 +31,22 @@ def get_pokemon_info(pokemon_id):
     return pokemon_card
 
 
-def get_starship_info(starship_id):
+def get_random_game_ids(num_card_ids):
+    # Max nba games IDs currently
+    min_number = 1
+    max_number = 40000
+    card_ids = random.sample(range(min_number, max_number + 1), num_card_ids)
+    return card_ids
+
+
+def get_nba_game_info(game_id):
     current_stats = {}
-    url = f"https://swapi.dev/api/starships/{starship_id}"
+    url = f"https://www.balldontlie.io/api/v1/games/{game_id}"
     response = requests.get(url)
-    current_starship = response.json()
-    starship_name = current_starship["name"]
-    current_stats["cost"] = current_starship["cost_in_credits"]
-    current_stats["length"] = current_starship["length"]
-    current_stats["speed"] = current_starship["max_atmosphering_speed"]
-    current_stats["cargo capacity"] = current_starship["cargo_capacity"]
-    starship_card = Card(starship_id, starship_name, current_stats)
-    return starship_card
-
-
-starship_valid_ids = [2, 3, 5, 9, 10, 11, 12, 13, 15, 17, 21, 22, 23, 27, 28, 29, 31, 32, 39, 40, 41, 43, 47, 48,
-                      49, 52, 58, 59, 61, 63, 64, 65, 66, 68, 74, 75]
-
-for i in range(len(starship_valid_ids)):
-    card_number = starship_valid_ids[i]
-    next_card = get_starship_info(card_number)
-    print(next_card)
+    current_game = response.json()
+    game_name = current_game["home_team"]["full_name"] + " vs " + current_game["visitor_team"]["full_name"]
+    current_stats["home score"] = current_game["home_team_score"]
+    current_stats["visitor score"] = current_game["visitor_team_score"]
+    current_stats["season"] = current_game["season"]
+    nba_game_card = Card(game_id, game_name, current_stats)
+    return nba_game_card

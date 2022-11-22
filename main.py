@@ -33,7 +33,8 @@ computer_wins = 0
 
 for round_num in range(num_of_rounds):
     current_round = round_num + 1
-    current_round_result = play_round.play_round(current_round, 2)
+    # TODO: currently deck number is hardcoded
+    current_round_result = play_round.play_round(current_round, 1)
     if current_round_result == E_scores.Score.win:
         player_wins += 1
     elif current_round_result == E_scores.Score.lost:

@@ -20,21 +20,14 @@ computer_cards = []
 
 
 def get_card_data(deck_num):
-    # Starships possible ids
-    starship_valid_ids = [2, 3, 5, 9, 10, 11, 12, 13, 15, 17, 21, 22, 23, 27, 28, 29, 31, 32, 39, 40, 41, 43, 47, 48,
-                          49, 52, 58, 59, 61, 63, 64, 65, 66, 68, 74, 75]
-
     num_card_ids = 4
 
     if deck_num == 1:
-        # Min and max IDs, number of selected pokemons per player to generate the list of unique Pokemon ids
-        min_number = 1
-        max_number = 151
-        card_ids = random.sample(range(min_number, max_number + 1), num_card_ids)
+        card_ids = get_API_data.get_random_pokemon_ids(num_card_ids)
         get_matching_card_data = get_API_data.get_pokemon_info
     else:
-        card_ids = random.sample(starship_valid_ids, num_card_ids)
-        get_matching_card_data = get_API_data.get_starship_info
+        card_ids = get_API_data.get_random_game_ids(num_card_ids)
+        get_matching_card_data = get_API_data.get_nba_game_info
 
     # Getting card info and assigning them to Player's and computer's stacks
     for i in range(num_card_ids):
@@ -134,6 +127,7 @@ def play_round(current_round_num, deck_num):
     else:
         text_to_print += " (this round the opponent chooses the fighting trait)\n"
         print(text_to_print)
+    # TODO: currently hardcoded
     get_card_data(deck_num)
     players_card = choose_player_card()
     computers_card = choose_computer_card()
