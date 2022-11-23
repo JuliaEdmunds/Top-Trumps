@@ -1,19 +1,18 @@
-# Lets the player choose between 2 card decks: Pokemon (1) or NBA (2)
+# Lets the player choose between the card decks
 import E_decks
 import time
 import helpers
 
 
 def choose_deck():
-    pokemon_deck_name = E_decks.Deck.Pokemon.name
-    pokemon_deck_value = E_decks.Deck.Pokemon.value
-    nba_deck_name = E_decks.Deck.NBA.name
-    nba_deck_value = E_decks.Deck.NBA.value
+    deck_values = set(item.value for item in E_decks.Deck)
+    deck_choices = ""
+
+    for deck in E_decks.Deck:
+        deck_choices += f"{deck.value} {deck.name}\n"
     while True:
-        chosen_deck = input(f"You can choose between 2 different decks of cards: {pokemon_deck_name} (recommended for "
-                            f"easier playthrough) or {nba_deck_name} (recommended for more advanced players).\nPlease "
-                            f"type {pokemon_deck_value} for {pokemon_deck_name} deck or {nba_deck_value} for "
-                            f"{nba_deck_name} deck ")
+        chosen_deck = input(f"You can choose between {len(E_decks.Deck)} different decks of cards:\n{deck_choices}\n"
+                            f"Please choose you deck: ")
         try:
             chosen_deck = int(chosen_deck)
         except ValueError:
@@ -21,11 +20,13 @@ def choose_deck():
             time.sleep(1)
             continue
 
-        if chosen_deck < pokemon_deck_value or chosen_deck > nba_deck_value:
+        if chosen_deck not in deck_values:
             print(f"{chosen_deck} in not a valid card number.")
             time.sleep(1)
             continue
 
         else:
+            print(f"\nGreat you have chosen the {E_decks.Deck(chosen_deck).name} deck. Enjoy the game!")
+            time.sleep(3)
             helpers.clear()
             return chosen_deck
