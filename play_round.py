@@ -90,11 +90,7 @@ def player_choose_stat(card):
 
 def check_score(player_card, computer_card, fighting_stat):
     player_power = player_card.stats[f"{fighting_stat}"]
-    if player_power == "unknown" or player_power == "n/a":
-        player_power = random.randint(0, 1000)
     computer_power = computer_card.stats[f"{fighting_stat}"]
-    if computer_power == "unknown" or computer_power == "n/a":
-        computer_power = random.randint(0, 1000)
     helpers.clear()
     print(f"You are fighting with {fighting_stat}! Do you think that {player_card.name} can beat your opponent?")
     time.sleep(2)
@@ -127,7 +123,6 @@ def play_round(current_round_num, deck_num):
     else:
         text_to_print += " (this round the opponent chooses the fighting trait)\n"
         print(text_to_print)
-    # TODO: currently hardcoded
     get_card_data(deck_num)
     players_card = choose_player_card()
     computers_card = choose_computer_card()
