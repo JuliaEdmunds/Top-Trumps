@@ -93,7 +93,7 @@ def check_score(player_card, computer_card, fighting_stat):
     helpers.clear()
     print(f"You are fighting with {fighting_stat}! Do you think that {player_card.name} can beat your opponent?")
     time.sleep(2)
-    print(f"\nYour opponent plays {computer_card.name}! Let's compare your stats:\n\nYour {fighting_stat}: {player_power}"
+    print(f"\nYour opponent plays {computer_card.name}! Let's compare the stats:\n\nYour {fighting_stat}: {player_power}"
           f"\nOpponent's {fighting_stat}: {computer_power}\n")
     time.sleep(4)
     if player_power > computer_power:
