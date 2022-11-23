@@ -6,17 +6,13 @@
 #   2) Play multiple rounds using play_round file
 #   3) Decide who wins the game (the player with the highest number of rounds won, wins the game)
 
-# I have created files that we can utilize to work on different features of the project (see below example)
+# I have created files that we can utilize to work on different features of the project
 
 import E_scores
+import get_card_deck
 import play_round
 import time
 import helpers
-
-
-import test
-
-test.test_hello_function()
 
 
 # Starting the "real" code here, for now I have selected these parameters, but we can discuss and change
@@ -29,14 +25,17 @@ Player with higher stats wins a round. You will play total of {num_of_rounds} ro
 Each round you earn points: for win {win_points} points, for draw {draw_points} points and for a lost round {lost_points} point.\n""")
 time.sleep(5)
 
+# Get the deck number from the player
+chosen_deck = get_card_deck.choose_deck()
+
 player_score = 0
 player_wins = 0
 computer_wins = 0
 
 for round_num in range(num_of_rounds):
     current_round = round_num + 1
-    # TODO: currently deck number is hardcoded
-    current_round_result = play_round.play_round(current_round, 1)
+    # Play a round tracking round number & chosen deck for correct cards
+    current_round_result = play_round.play_round(current_round, chosen_deck)
     if current_round_result == E_scores.Score.win:
         player_wins += 1
     elif current_round_result == E_scores.Score.lost:
