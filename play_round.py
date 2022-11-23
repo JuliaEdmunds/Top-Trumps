@@ -1,15 +1,14 @@
 # Brief: play a round of the game
 # Functions needed:
-#   1) Get a random Pokemon for the player and another for their opponent passing random ID into get_API_data file
-#      (Generate a random number between 1 and 151 to use as the Pokemon ID number)
-#       SHOULD: Get 2 random Pokemon and let the player decide which one that they want to use
-#       COULD: Allow the opponent (computer) to get 2 random Pokemon and let it decide which one to use
+#   1) Get a random Pokémon for the player and another for their opponent passing random ID into get_API_data file
+#      (Generate a random number between 1 and 151 to use as the Pokémon ID number)
+#       SHOULD: Get 2 random Pokémon and let the player decide which one that they want to use
+#       COULD: Allow the opponent (computer) to get 2 random Pokémon and let it decide which one to use
 #   2) Ask the user which stat they want to use (id, height or weight) (players always goes 1st)
-#      COULD: Allow the opponent (computer) to choose a stat that they would like to compare (alternating starting order)
-#   3) Compare the player's and opponent's Pokemon on the chosen stat to decide who wins
+#      COULD: Allow the opponent (comp.) to choose a stat that they would like to compare (alternating starting order)
+#   3) Compare the player's and opponent's Pokémon on the chosen stat to decide who wins
 #   4) Record the outcome of each round (who won)
 
-import random
 import time
 import E_scores
 import get_API_data
@@ -66,7 +65,7 @@ def choose_player_card():
 
 
 def choose_computer_card():
-    # For now computer chooses the card based on max value (usually weight for pokemon), to improve the app we would
+    # For now computer chooses the card based on max value (usually weight for Pokémon), to improve the app we would
     # have it recognize min and max of each trait, so it would choose highest normalized value
     first_card_max_stat = max(computer_cards[0].stats.values())
     second_card_max_stat = max(computer_cards[1].stats.values())
