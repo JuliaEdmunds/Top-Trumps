@@ -25,6 +25,7 @@ print(f"""Welcome to Top Trumps. It is a game in which players decide (in altern
 Player with higher stats wins a round. You will play total of {num_of_rounds} rounds. 
 Each round you earn points: for win {win_points} points, for draw {draw_points} points and for a lost round {lost_points} point.\n""")
 time.sleep(5)
+player_name = input(f"First things first: what is your name/nickname? ")
 
 playing = True
 while playing:
