@@ -24,6 +24,9 @@ def get_card_data(deck_num):
     if deck_num == 1:
         card_ids = get_API_data.get_random_pokemon_ids(num_card_ids)
         get_matching_card_data = get_API_data.get_pokemon_info
+    elif deck_num == 2:
+        card_ids = get_API_data.get_random_nba_player_ids(num_card_ids)
+        get_matching_card_data = get_API_data.get_nba_player_info
     else:
         card_ids = get_API_data.get_random_game_ids(num_card_ids)
         get_matching_card_data = get_API_data.get_nba_game_info

@@ -11,7 +11,7 @@ def choose_deck():
     for deck in E_decks.Deck:
         deck_choices += f"{deck.value} {deck.name}\n"
     while True:
-        chosen_deck = input(f"You can choose between {len(E_decks.Deck)} different decks of cards:\n{deck_choices}\n"
+        chosen_deck = input(f"\nYou can choose between {len(E_decks.Deck)} different decks of cards:\n{deck_choices}\n"
                             f"Please choose you deck: ")
         try:
             chosen_deck = int(chosen_deck)
@@ -21,7 +21,7 @@ def choose_deck():
             continue
 
         if chosen_deck not in deck_values:
-            print(f"{chosen_deck} in not a valid card number.")
+            print(f"{chosen_deck} in not a valid deck number.")
             time.sleep(1)
             continue
 
