@@ -19,7 +19,7 @@ In case of issues please try to Google a solution that will work for you
 
 - [x] Decide on the group name
 - [x] Input/hello message - introduction, instruction, num of rounds
-- [ ] Get username (also for leader board)
+- [x] Get username (also for leader board)
 - [x] Generate a random number between 1 and 151 to use as the Pokémon ID number
 - [x] Using the Pokémon API get a Pokémon based on its ID number (1st stage)
 - [x] Create a dictionary that contains the returned Pokémon's name, id, height and weight and other playing stat we decide on (https://pokeapi.co/ )
@@ -32,6 +32,7 @@ In case of issues please try to Google a solution that will work for you
 - [x] Switch ID to base_experience as a fighting stat for Pokémon
 - [x] Get 2 random cards and let the player decide which one that they want to use
 - [x] Play multiple rounds and record the outcome of each round. The player with the highest number of rounds won, wins the game
+- [x] Add an option for player to decide if they want to play again or not
 
 
 ## COULD
