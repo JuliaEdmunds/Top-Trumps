@@ -18,7 +18,7 @@ import leaderboard
 
 
 # Starting the "real" code here, for now I have selected these parameters, but we can discuss and change
-num_of_rounds = 1
+num_of_rounds = 2
 win_points = E_scores.Score.win.value
 draw_points = E_scores.Score.draw.value
 lost_points = E_scores.Score.lost.value
@@ -57,7 +57,7 @@ while playing:
         helpers.clear()
 
     if player_wins > computer_wins:
-        print(f"Congrats. You won the game with {player_wins} wins (opponent won only {computer_wins} rounds) and "
+        print(f"Congrats. You won the game with {player_wins} wins (opponent won {computer_wins} rounds) and "
               f"a total of {player_score} points")
     elif player_wins < computer_wins:
         print(f"Sorry this time you lost the game... You won {player_wins} rounds while opponent won {computer_wins}. "
@@ -66,6 +66,7 @@ while playing:
         print(f"It's a draw. Both you and your opponent won {player_wins} rounds. Your total score is {player_score} "
               f"points")
 
-    # leaderboard.check_name()
+    time.sleep(4)
+    leaderboard.check_if_leader(player_name, chosen_deck, player_score)
 
     playing = is_playing_again.keep_playing()

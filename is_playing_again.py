@@ -10,5 +10,5 @@ def keep_playing():
         helpers.clear()
         return True
     else:
-        print("Thanks for playing! Bye...")
+        print("\nThanks for playing! Bye...")
         return False

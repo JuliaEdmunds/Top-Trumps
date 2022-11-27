@@ -5,7 +5,9 @@
 
 # Make sure you can import pandas package
 import pandas as pd
-import csv
+import E_decks
+import time
+import helpers
 
 
 def sort_leaderboard(leaderboard):
@@ -17,20 +19,24 @@ def sort_leaderboard(leaderboard):
                             inplace=True)
 
 
-def check_if_leader(player_name, deck_name, current_score):
+def check_if_leader(player_name, deck_id, current_score):
+    deck_name = E_decks.Deck(deck_id).name
     # Assigning dataset
     leaderboard_csv_data = pd.read_csv("leaderboard_data.csv")
 
     # Sort before printing
     sort_leaderboard(leaderboard_csv_data)
 
-    print(f"Here is the current leaderboard:\n{leaderboard_csv_data.to_string(index=False)}")
+    helpers.clear()
+    print(f"\nHere is the current leaderboard:\n{leaderboard_csv_data.to_string(index=False)}")
+    time.sleep(5)
 
     # Check the lowest score (last column, last row) to check if the player makes it to the leaderboard
     lowest_score = leaderboard_csv_data.iloc[-1, -1]
 
     if current_score > lowest_score:
-        print(f"Congrats {player_name}. You made it to the leaderboard with your total score of {current_score} points!")
+        print(f"\nCongrats {player_name}. You made it to the leaderboard with your total score of {current_score} "
+              f"points!")
         leaderboard_csv_data.iloc[-1, leaderboard_csv_data.columns.get_loc("Name")] = player_name
         leaderboard_csv_data.iloc[-1, leaderboard_csv_data.columns.get_loc("Deck")] = deck_name
         leaderboard_csv_data.iloc[-1, leaderboard_csv_data.columns.get_loc("Score")] = current_score
@@ -44,9 +50,9 @@ def check_if_leader(player_name, deck_name, current_score):
         print(f"Sorry {player_name}, with total score of {current_score} you did not make it to the leaderboard.")
 
 
+# Code to test when running just this file
 if __name__ == "__main__":
     player = "Julia"
     deck = "Pokemon"
     score = 2
-
     check_if_leader(player, deck, score)
