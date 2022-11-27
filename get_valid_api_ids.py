@@ -1,9 +1,10 @@
 # This is a standalone file to get valid IDs for NBA players API - do not call it from anywhere in the project
 # From checking ids in a loop the max id is 3092
 import requests
+import time
 
 
-min_number = 1200
+min_number = 1
 max_number = 3092
 valid_ids = []
 for current_id in range(min_number, max_number + 1):
@@ -19,6 +20,7 @@ for current_id in range(min_number, max_number + 1):
         continue
     else:
         valid_ids.append(current_id)
+    time.sleep(5)
 
 print(valid_ids)
 
