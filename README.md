@@ -45,7 +45,7 @@ It was quite straightforward to work with as we had enough numerical data to cho
 
 ## COULD
 - [x] Allow the opponent (computer) to choose a stat that they would like to compare
-- [ ] Record high scores for players and store them in a file - leaderboard - record 5 top players (names), their scores and the deck they have played with
+- [x] Record high scores for players and store them in a file - leaderboard - record 5 top players (names), their scores and the deck they have played with
 - [x] Allow the opponent (computer) to get 2 random cards and let it decide which one to use
 - [x] Add more APIs so the player can choose the deck they want to play with 
 
