@@ -14,10 +14,11 @@ import play_round
 import time
 import helpers
 import is_playing_again
+import leaderboard
 
 
 # Starting the "real" code here, for now I have selected these parameters, but we can discuss and change
-num_of_rounds = 5
+num_of_rounds = 1
 win_points = E_scores.Score.win.value
 draw_points = E_scores.Score.draw.value
 lost_points = E_scores.Score.lost.value
@@ -64,5 +65,7 @@ while playing:
     else:
         print(f"It's a draw. Both you and your opponent won {player_wins} rounds. Your total score is {player_score} "
               f"points")
+
+    # leaderboard.check_name()
 
     playing = is_playing_again.keep_playing()

@@ -4,8 +4,8 @@
 ## Project brief 
 
 ### For smooth experience make sure to:
-- Check if the requests module is installed and if not please install it. 
-If using pycharm, check in the "Python Packages" (in the bottom taskbar) if "requests" is installed. If not then go to the "Terminal" tab (also bottom taskbar), paste "py -m pip install requests" and press enter.
+- Check if the requests and pandas modules are installed and if not please install it. 
+If using pycharm, check in the "Python Packages" (in the bottom taskbar) if "requests" and "pandas" are installed. If not then go to the "Terminal" tab (also bottom taskbar), paste "py -m pip install requests" and press enter. Repeat for pandas.
 In you have any issues please try to Google a solution that will work for you
 - Enable "Emulate terminal in output console" for the main.py file. You can find this under edit configuration of the main file, then it's under Execution option
 - Always run the project from main.py 
@@ -19,9 +19,9 @@ In you have any issues please try to Google a solution that will work for you
 - The first API is the one we have used during the course (https://pokeapi.co/). 
 It was quite straightforward to work with as we had enough numerical data to choose for the stats
 - We have struggled to find other suitable APIs that have not been disabled and included the numerical data we have been searching for
-- We have decided to use balldontlie.io/ which provided us with 2 additional APIs:
-  1) NBA_Games is quite an unusual one but all ids contained valid data we could use
-  2) FOr NBA_Player we had to write a small standalone program to extract valid ids we can use for the Top Trumps game
+- We have decided to use https://www.balldontlie.io/ which provided us with 2 additional APIs:
+  1. NBA_Games is quite an unusual one but all ids contained valid data we could use
+  2. FOr NBA_Player we had to write a small standalone program to extract valid ids we can use for the Top Trumps game
 
 ## MUST
 
