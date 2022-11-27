@@ -4,16 +4,24 @@
 ## Project brief 
 
 ### For smooth experience make sure to:
-- Check if the Requests module is installed and if not please install it. 
+- Check if the requests module is installed and if not please install it. 
 If using pycharm, check in the "Python Packages" (in the bottom taskbar) if "requests" is installed. If not then go to the "Terminal" tab (also bottom taskbar), paste "py -m pip install requests" and press enter.
-In case of issues please try to Google a solution that will work for you
+In you have any issues please try to Google a solution that will work for you
 - Enable "Emulate terminal in output console" for the main.py file. You can find this under edit configuration of the main file, then it's under Execution option
 - Always run the project from main.py 
 
-### Short description
-- We have decided to use GitHub as the version control
-- Split into files for better readability and avoiding merge conflicts
-- ??
+### Version control info
+- We have decided to use GitHub for version control and collaboration to enable smooth code-sharing and track changes in the code across versions
+- To enable smooth collaboration we have decided to split the project into multiple files for better readability and to avoid merge conflicts
+
+### Used APIs
+- We have decided to use multiple APIs in our project to be able to play with different decks of cards
+- The first API is the one we have used during the course (https://pokeapi.co/). 
+It was quite straightforward to work with as we had enough numerical data to choose for the stats
+- We have struggled to find other suitable APIs that have not been disabled and included the numerical data we have been searching for
+- We have decided to use balldontlie.io/ which provided us with 2 additional APIs:
+  1) NBA_Games is quite an unusual one but all ids contained valid data we could use
+  2) FOr NBA_Player we had to write a small standalone program to extract valid ids we can use for the Top Trumps game
 
 ## MUST
 
@@ -22,7 +30,7 @@ In case of issues please try to Google a solution that will work for you
 - [x] Get username (also for leader board)
 - [x] Generate a random number between 1 and 151 to use as the Pokémon ID number
 - [x] Using the Pokémon API get a Pokémon based on its ID number (1st stage)
-- [x] Create a dictionary that contains the returned Pokémon's name, id, height and weight and other playing stat we decide on (https://pokeapi.co/ )
+- [x] Create a dictionary that contains the returned Pokémon's name, id, height and weight and other playing stat we decide on (https://pokeapi.co/)
 - [x] Get a random Pokémon for the player and another for their opponent
 - [x] Ask the user which stat they want to use (height, weight, xp)
 - [x] Compare the player's and opponent's Pokémon on the chosen stat to decide who wins

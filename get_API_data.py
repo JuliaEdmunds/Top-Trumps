@@ -1,13 +1,12 @@
 # Brief: responsible for getting API data
 # Functions needed:
-#   1) Using the Pokemon API get a Pokemon based on its ID number
-#   2) Create a dictionary (Julia: changed to a class/object) that contains the returned Pokemon's name, id, height,
+#   1) Using the Pokémon API get a Pokémon based on its ID number
+#   2) Create a dictionary (Julia: changed to a class/object) that contains the returned Pokémon name, id, height,
 #   weight, base_experience and other playing stat we decide on (★https://pokeapi.co/ )
 #   3) Add 2nd API
 
 import requests
 import random
-from decimal import *
 from trump_card import Card
 
 
