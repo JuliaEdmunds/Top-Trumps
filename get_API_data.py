@@ -37,6 +37,7 @@ def get_random_nba_player_ids(num_card_ids):
     with open("valid_nba_player_ids.txt", "r") as valid_nba_player_ids_string:
         contents = valid_nba_player_ids_string.read()
 
+    # TODO: Check if and how to close the file
     # Converting text file string into a list of ints
     list_of_ids_as_strings = contents.split(", ")
     valid_nba_player_ids = [eval(i) for i in list_of_ids_as_strings]

@@ -15,6 +15,8 @@ def table_print(dataset):
     rows = [x.values() for x in dataset]
     print(tabulate.tabulate(rows, header))
 
+# TODO: Change so you see the leaderboard only once either with your score or just to see current scores
+
 
 def check_if_leader(player_name, deck_id, current_score):
     deck_name = E_decks.Deck(deck_id).name
@@ -45,6 +47,8 @@ def check_if_leader(player_name, deck_id, current_score):
 
             sorted_leaderboard.append(new_leader_entry)
 
+            # TODO: Sort here before writing
+
             # Save new entries to the leaderboard
             keys = sorted_leaderboard[0].keys()
             with open("leaderboard_data.csv", "w", newline="") as updated_leaderboard_csv:
@@ -70,7 +74,7 @@ def check_if_leader(player_name, deck_id, current_score):
 
 # Code to test when running just this file
 if __name__ == "__main__":
-    player = "J"
-    deck = 1
-    score = 2
-    check_if_leader(player, deck, score)
+    check_if_leader("Player1", 1, 2)
+    check_if_leader("Player2", 2, 1)
+    check_if_leader("Player3", 3, -6)
+
