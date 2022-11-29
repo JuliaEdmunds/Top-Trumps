@@ -61,7 +61,7 @@ def check_if_leader(player_name, deck_id, current_score):
         table_print(sorted_leaderboard)
         time.sleep(5)
     else:
-        print(f"Sorry {player_name}, with total score of {current_score} you did not make it to the "
+        print(f"\nSorry {player_name}, with total score of {current_score} you did not make it to the "
               f"leaderboard.\nHere is the current leaderboard:")
         table_print(leaderboard_as_list)
         time.sleep(5)
