@@ -29,8 +29,8 @@ We have decided to use multiple APIs in our project to be able to play with diff
 The first API is the one we have used during the course (https://pokeapi.co/). It was quite straightforward to work with as we had enough numerical data to choose for the stats
 ### NBA_Games
 We used https://www.balldontlie.io/ for NBA_Games. It is quite an unusual one but all ids contained valid data we could use
-### NBA_Player
-We used https://www.balldontlie.io/ also for NBA_Player. We had to write a small standalone program to extract valid ids we can use for the Top Trumps game. 
+### NBA_Players
+We used https://www.balldontlie.io/ also for NBA_Players. We had to write a small standalone program to extract valid ids we can use for the Top Trumps game. 
 Also, we have switched height and weight from imperial to metric units 
 
 ## Tasks

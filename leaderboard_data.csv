@@ -1,6 +1,6 @@
 Name,Deck,Score
-Julia,NBA_Players,4
 Test1,NBA_Players,2
-Julia,NBA_Games,2
 Test2,Pokemon,1
-J,Pokemon,1
+Test3,NBA_Players,0
+Test4,NBA_Games,-1
+Test5,NBA_Games,-3
