@@ -2,7 +2,7 @@ import helpers
 
 
 def keep_playing():
-    is_still_playing = input("Do you want to try again? (yes/no) ").lower().strip()
+    is_still_playing = input("\nDo you want to play again? (yes/no) ").lower().strip()
     while is_still_playing != "yes" and is_still_playing != "no":
         is_still_playing = input("Please answer yes or no? ").lower().strip()
 

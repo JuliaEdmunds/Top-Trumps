@@ -66,4 +66,5 @@ We decided to break the project into smaller tasks using the MSCW system
 Given more time we would have included the following things:
 - Add additional APIs
 - Add a GUI
-- 
+- For now computer chooses the card based on the max value (usually weight for Pokémon, height for NBA_Players and season for NBA_Games). 
+Given more time, we would have computer recognize the min and max values of each trait, so it would choose highest normalized value
