@@ -2,21 +2,21 @@
  by Team Everest
 
 ## For smooth experience make sure to implement these steps:
-### Packages
+### 1. Packages
 Check if the following modules are installed:
 1. requests 
 2. tabulate 
 
-If using pycharm, check in the "Python Packages" (in the bottom taskbar). If not then go to the "Terminal" tab (also bottom taskbar), paste "pip install requests" and press enter. Repeat for other modules.
+If using pycharm, check in the "Python Packages" (in the bottom taskbar). If they are not installed then go to the "Terminal" tab (also bottom taskbar), paste "pip install requests" and press enter. Repeat for other modules.
 If you have any issues please try to Google a solution that will work for you
 
-### Emulate terminal
+### 2. Emulate terminal
 Enable "Emulate terminal in output console" for the main.py file:
   1. Right-click main.py
   2. Select "Modify Run Configuration" 
   3. Then it's under Execution option
 
-### Run configurations
+### 3. Run configurations
 Always run the project from main.py 
 
 ## Version control info
