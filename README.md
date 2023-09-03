@@ -1,6 +1,12 @@
 # CFG Top-Trumps Project
  by Team Everest
 
+## Project goal
+Final project for the Code Fist Girls Introduction to Python & Apps. 
+
+## Project description
+Top Trumps is a game in which players draw cards and decide (in alternating order) which stats they want to compare. Both the Player and simple AI get 2 random cards and need to decide which one they want to use in the battle. The player with higher stats wins a round.
+
 ## For smooth experience make sure to implement these steps:
 ### 1. Packages
 Check if the following modules are installed:
@@ -71,4 +77,4 @@ Given more time we would have included the following things:
 - Add additional APIs
 - Add a GUI
 - For now computer chooses the card based on the max value (usually weight for Pokémon, height for NBA_Players and season for NBA_Games). 
-Given more time, we would have computer recognize the min and max values of each trait, so it would choose highest normalized value
+Given more time, we would have computer recognize the min and max values of each trait, so it would choose highest normalized value.
