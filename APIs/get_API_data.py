@@ -34,7 +34,7 @@ def get_pokemon_info(pokemon_id):
 def get_random_nba_player_ids(num_card_ids):
     # Since not all nba players have valid stats I have run a standalone get_valid_api_ids for this API to get the list
     # of valid ids and saved it in a text file
-    with open("valid_nba_player_ids.txt", "r") as valid_nba_player_ids_string:
+    with open("Data/valid_nba_player_ids.txt", "r") as valid_nba_player_ids_string:
         contents = valid_nba_player_ids_string.read()
 
     # Converting text file string into a list of ints

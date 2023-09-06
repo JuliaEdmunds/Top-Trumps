@@ -18,7 +18,7 @@ import leaderboard
 
 
 # Starting the "real" code here, for now I have selected these parameters, but we can discuss and change
-num_of_rounds = 5
+num_of_rounds = 3
 win_points = E_scores.Score.win.value
 draw_points = E_scores.Score.draw.value
 lost_points = E_scores.Score.lost.value

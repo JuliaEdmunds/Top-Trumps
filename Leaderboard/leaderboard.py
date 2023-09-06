@@ -18,7 +18,7 @@ def table_print(dataset):
 def check_if_leader(player_name, deck_id, current_score):
     deck_name = E_decks.Deck(deck_id).name
 
-    with open("leaderboard_data.csv", "r") as leaderboard_csv:
+    with open("Data/leaderboard_data.csv", "r") as leaderboard_csv:
         leader_data = csv.DictReader(leaderboard_csv)
         # Assign the csv as a list
         leaderboard_as_list = list(leader_data)
@@ -45,13 +45,13 @@ def check_if_leader(player_name, deck_id, current_score):
 
         # Save new entries to the leaderboard
         keys = updated_leaderboard[0].keys()
-        with open("leaderboard_data.csv", "w", newline="") as updated_leaderboard_csv:
+        with open("Data/leaderboard_data.csv", "w", newline="") as updated_leaderboard_csv:
             dict_writer = csv.DictWriter(updated_leaderboard_csv, keys)
             dict_writer.writeheader()
             dict_writer.writerows(updated_leaderboard)
 
         # Open new updated csv with the new leader scores
-        with open("leaderboard_data.csv", "r") as sorted_leaderboard_csv:
+        with open("Data/leaderboard_data.csv", "r") as sorted_leaderboard_csv:
             updated_data = csv.DictReader(sorted_leaderboard_csv)
 
             # Sort scores in the descending order
