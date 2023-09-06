@@ -2,7 +2,7 @@
  by Team Everest
 
 ## Project goal
-Final project for the Code Fist Girls Introduction to Python & Apps. 
+Final project for the [Code First Girls Introduction to Python & Apps](https://codefirstgirls.com/courses/classes/coding-kickstarter/). 
 
 ## Project description
 Top Trumps is a game in which players draw cards and decide (in alternating order) which stats they want to compare. Both the Player and simple AI get 2 random cards and need to decide which one they want to use in the battle. The player with higher stats wins a round.
